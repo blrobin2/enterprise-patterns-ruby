@@ -1,5 +1,7 @@
-class Dataset
+# frozen_string_literal: true
 
+# A representation of a collection of tables, or a database
+class Dataset
   def initialize(db_name)
     @db_name = db_name
     @tables = {}

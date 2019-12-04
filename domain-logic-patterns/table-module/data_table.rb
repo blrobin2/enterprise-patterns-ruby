@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# A representation of a table in a database
 class DataTable
   attr_reader :table_name, :data
 
@@ -12,19 +15,19 @@ class DataTable
   end
 
   def add_row(*row)
-    obj = Hash[@columns.map.with_index { |x, i| [x, row[i] ] }]
+    obj = Hash[@columns.map.with_index { |x, i| [x, row[i]] }]
     @data << obj
   end
 
   def new_row
-    Hash[@columns.collect { |x| [x, nil ] }]
+    Hash[@columns.collect { |x| [x, nil] }]
   end
 
   def add_new_row(row)
     @data << row
   end
 
-  def get_next_id
+  def next_id
     @data.length
   end
 
@@ -37,10 +40,17 @@ class DataTable
   end
 
   # Dynamic attribute fetcher
-  def method_missing(m, *args, &block)
-    column = m.to_s
-    return unless @columns.include?(column)
-    res = find(args[0])
-    res[column]
+  def method_missing(method_name, *args)
+    if respond_to_missing?(method_name)
+      column = method_name.to_s
+      res = find(args[0])
+      res[column]
+    else
+      super
+    end
+  end
+
+  def respond_to_missing?(method_name, include_private = false)
+    @columns.include?(method_name.to_s) || super
   end
 end
