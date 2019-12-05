@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require_relative 'person_gateway'
 require_relative 'registry'
 
+# A means of looking up people
 class PersonFinder
-
   def initialize(db)
     @db = db
   end
@@ -10,6 +12,7 @@ class PersonFinder
   def find(id)
     result = Registry.get_person(id)
     return result if result.present?
+
     rs = @db.get_first_row(find_statement_string, [id])
     PersonGateway.load(rs)
   end

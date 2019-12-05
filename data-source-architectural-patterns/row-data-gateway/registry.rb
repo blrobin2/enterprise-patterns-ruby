@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# A cache
 class Registry
   def self.get_person(id)
     # returns a person from the cache

@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'money'
 
+# A person
 class Person
   def initialize(data)
     @data = data
