@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'application_service'
 
 class RecognitionService < ApplicationService
-
   def calculate_revenue_recognitions(contract_number)
     contract = Contract.read_for_update(contract_number)
     contract.calculate_recognitions

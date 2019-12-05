@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'command'
 
 class DeleteFile < Command
@@ -12,7 +14,7 @@ class DeleteFile < Command
   end
 
   def unexecute
-    f = File.open(@path, "w")
+    f = File.open(@path, 'w')
     f.write(@contents)
     f.close
   end

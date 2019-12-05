@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Formatter
-  def output_report(context)
-    raise "Abstract method"
+  def output_report(_context)
+    raise 'Abstract method'
   end
 end

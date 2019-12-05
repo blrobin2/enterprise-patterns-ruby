@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'sqlite3'
 
 DBNAME = 'revenue.sqlite'
-File.delete(DBNAME) if File.exists? DBNAME
+File.delete(DBNAME) if File.exist? DBNAME
 
 create_tables = File.read('migration.sql').split("\n")
 

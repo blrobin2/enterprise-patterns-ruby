@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'command'
 
 class CreateFile < Command
@@ -8,7 +10,7 @@ class CreateFile < Command
   end
 
   def execute
-    f = File.open(@path, "w")
+    f = File.open(@path, 'w')
     f.write(@contents)
     f.close
   end
