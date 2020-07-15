@@ -1,0 +1,2 @@
+CREATE TABLE keys (name VARCHAR PRIMARY KEY, next_id INT)
+INSERT INTO keys VALUES ('orders', 1)
